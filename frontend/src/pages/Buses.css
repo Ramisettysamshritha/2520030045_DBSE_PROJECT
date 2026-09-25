@@ -1,0 +1,2332 @@
+/* =========================================================
+   EXPLOREINDIA — BUSES
+   Visual language follows the Home page
+   ========================================================= */
+
+   
+
+.buses-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+
+  background: #f5f2eb;
+  color: #183f3a;
+
+  font-family: "DM Sans", sans-serif;
+}
+
+.buses-page *,
+.buses-page *::before,
+.buses-page *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   HERO BACKGROUND
+   ========================================================= */
+
+.bus-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 590px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 25, 28, 0.68),
+      rgba(5, 25, 28, 0.28) 55%,
+      rgba(5, 25, 28, 0.38)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(5, 18, 22, 0.48),
+      rgba(5, 18, 22, 0.08) 52%,
+      #f5f2eb 100%
+    ),
+    var(--bus-background);
+
+  background-size: cover;
+  background-position: center;
+
+  z-index: 0;
+
+  transition: background-image 0.6s ease;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.bus-navbar {
+  position: relative;
+  z-index: 20;
+
+  width: min(1400px, calc(100% - 80px));
+  height: 86px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* LOGO */
+
+.bus-logo {
+  color: white;
+  text-decoration: none;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 30px;
+  font-weight: 600;
+
+  letter-spacing: -1px;
+
+  white-space: nowrap;
+}
+
+.bus-logo span {
+  font-style: italic;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+/* NAV LINKS */
+
+.bus-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.bus-nav a {
+  position: relative;
+
+  color: rgba(255, 255, 255, 0.86);
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  padding: 10px 0;
+
+  transition: 0.25s ease;
+}
+
+.bus-nav a:hover {
+  color: white;
+}
+
+.bus-nav a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 0;
+  height: 2px;
+
+  background: white;
+
+  transition: width 0.25s ease;
+}
+
+.bus-nav a:hover::after,
+.bus-nav a.active::after {
+  width: 100%;
+}
+
+/* ACCOUNT */
+
+.bus-account-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+.bus-account-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.bus-login-link {
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.bus-signup-link {
+  color: #183f3a;
+
+  background: white;
+
+  text-decoration: none;
+
+  padding: 10px 21px;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: 0.25s ease;
+}
+
+.bus-signup-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* LOGGED IN */
+
+.bus-account-container {
+  position: relative;
+}
+
+.account-btn {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  color: white;
+
+  padding: 7px 14px 7px 7px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(12px);
+
+  transition: 0.25s ease;
+}
+
+.account-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.account-avatar-small {
+  width: 31px;
+  height: 31px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #d8b36a;
+
+  color: #173d39;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.account-arrow {
+  font-size: 9px;
+  margin-left: 2px;
+}
+
+/* ACCOUNT DROPDOWN */
+
+.bus-account-dropdown {
+  position: absolute;
+
+  top: calc(100% + 12px);
+  right: 0;
+
+  width: 285px;
+
+  background: white;
+
+  color: #222;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 20px 55px rgba(0, 0, 0, 0.24);
+
+  overflow: hidden;
+
+  z-index: 9999;
+
+  animation: busAccountDrop 0.18s ease;
+}
+
+@keyframes busAccountDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.account-header {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 18px;
+}
+
+.account-avatar {
+  width: 43px;
+  height: 43px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #d8b36a;
+
+  color: #183f3a;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  flex-shrink: 0;
+}
+
+.account-header strong {
+  display: block;
+
+  color: #203c38;
+
+  font-size: 14px;
+
+  margin-bottom: 4px;
+}
+
+.account-header small {
+  display: block;
+
+  max-width: 185px;
+
+  color: #7b8581;
+
+  font-size: 11px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-divider {
+  height: 1px;
+
+  background: #ecefeb;
+}
+
+.bus-account-dropdown > a {
+  display: block;
+
+  padding: 12px 18px;
+
+  color: #344b47;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  transition: 0.2s ease;
+}
+
+.bus-account-dropdown > a:hover {
+  background: #f2f6f3;
+
+  color: #174f49;
+}
+
+.logout-button {
+  width: 100%;
+
+  border: none;
+
+  background: white;
+
+  color: #b23a32;
+
+  text-align: left;
+
+  padding: 14px 18px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.logout-button:hover {
+  background: #fff2f1;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.bus-hero {
+  position: relative;
+  z-index: 2;
+
+  height: 430px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 0 20px;
+}
+
+.hero-inner {
+  color: white;
+
+  margin-top: 25px;
+
+  max-width: 850px;
+}
+
+.hero-small {
+  margin: 0 0 20px;
+
+  font-size: 11px;
+
+  letter-spacing: 4px;
+
+  font-weight: 600;
+
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.hero-inner h1 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(58px, 7vw, 100px);
+
+  line-height: 0.98;
+
+  font-weight: 600;
+
+  letter-spacing: 1px;
+
+  text-shadow:
+    0 5px 30px rgba(0, 0, 0, 0.35);
+}
+
+.hero-description {
+  max-width: 570px;
+
+  margin: 22px auto 0;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 16px;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.search-area {
+  position: relative;
+
+  z-index: 10;
+
+  width: min(1160px, calc(100% - 50px));
+
+  margin: -42px auto 0;
+}
+
+.search-box {
+  min-height: 96px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    42px
+    1fr
+    1.15fr
+    165px;
+
+  align-items: center;
+
+  padding: 12px 14px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 22px 55px rgba(25, 55, 50, 0.16);
+
+  backdrop-filter: blur(14px);
+}
+
+.search-item {
+  padding: 9px 20px;
+
+  min-width: 0;
+}
+
+.search-item span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #89938f;
+
+  font-size: 9px;
+
+  letter-spacing: 1.7px;
+
+  font-weight: 700;
+}
+
+.search-item select,
+.search-item input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #24443f;
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.search-item input {
+  cursor: pointer;
+}
+
+.swap-btn {
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid #d8dfda;
+
+  border-radius: 50%;
+
+  background: white;
+
+  color: #a27736;
+
+  font-size: 17px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.swap-btn:hover {
+  border-color: #a27736;
+
+  background: #fbf7ee;
+
+  transform: rotate(180deg);
+}
+
+.search-main-btn {
+  height: 58px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #174f49;
+
+  color: white;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.search-main-btn:hover {
+  background: #103f3a;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 20px rgba(23, 79, 73, 0.22);
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.content {
+  position: relative;
+
+  z-index: 3;
+
+  width: min(1320px, calc(100% - 70px));
+
+  margin: 70px auto 100px;
+}
+
+/* =========================================================
+   POPULAR ROUTES
+   ========================================================= */
+
+.popular {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 35px;
+
+  margin-bottom: 30px;
+}
+
+.section-heading > span,
+.results-header > div:first-child > span,
+.filter-title > span,
+.why-heading > span {
+  display: block;
+
+  color: #8a9691;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  font-weight: 700;
+}
+
+.section-heading h2,
+.results-header h2,
+.filter-title h3,
+.why-heading h2 {
+  margin: 6px 0 0;
+
+  color: #183f3a;
+
+  font-family: "Playfair Display", serif;
+
+  font-weight: 600;
+}
+
+.section-heading h2 {
+  font-size: 34px;
+}
+
+.section-heading p {
+  margin: 8px 0 0;
+
+  color: #7b8782;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+.route-pills {
+  display: flex;
+
+  justify-content: flex-end;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+}
+
+.route-pills button {
+  border: 1px solid #d9e0da;
+
+  border-radius: 30px;
+
+  background: white;
+
+  color: #53635e;
+
+  padding: 10px 16px;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.route-pills button:hover {
+  border-color: #174f49;
+
+  color: #174f49;
+
+  background: #f7faf7;
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   MAIN LAYOUT
+   FILTERS LEFT + RESULTS RIGHT
+   ========================================================= */
+
+.booking-layout {
+  display: grid;
+
+  grid-template-columns:
+    245px
+    minmax(0, 1fr);
+
+  gap: 30px;
+
+  align-items: start;
+}
+
+/* =========================================================
+   FILTER SIDEBAR
+   ========================================================= */
+
+.filters {
+  position: sticky;
+
+  top: 25px;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  border: 1px solid #e0e5df;
+
+  border-radius: 18px;
+
+  padding: 23px 20px;
+
+  box-shadow:
+    0 10px 30px rgba(25, 55, 50, 0.055);
+}
+
+.filter-title h3 {
+  font-size: 27px;
+}
+
+.filter-title p {
+  margin: 8px 0 0;
+
+  color: #84908b;
+
+  font-size: 11px;
+
+  line-height: 1.55;
+}
+
+.filter-section {
+  padding: 20px 0;
+
+  border-bottom: 1px solid #edf0eb;
+}
+
+.filter-section:last-of-type {
+  border-bottom: none;
+}
+
+.filter-section > label:first-child {
+  display: block;
+
+  margin-bottom: 12px;
+
+  color: #7d8984;
+
+  font-size: 9px;
+
+  letter-spacing: 1.5px;
+
+  font-weight: 700;
+}
+
+.filter-choice {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  border: none;
+
+  background: transparent;
+
+  padding: 9px 0;
+
+  color: #566660;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition: 0.2s ease;
+}
+
+.filter-choice:hover {
+  color: #174f49;
+}
+
+.filter-choice small {
+  color: #a0aaa6;
+
+  font-size: 9px;
+}
+
+.filter-choice.selected {
+  color: #174f49;
+
+  font-weight: 700;
+}
+
+.filter-choice.selected::before {
+  content: "";
+
+  width: 3px;
+  height: 16px;
+
+  position: absolute;
+
+  margin-left: -10px;
+
+  border-radius: 3px;
+
+  background: #a77a36;
+}
+
+.check {
+  display: flex !important;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin: 0 0 11px;
+
+  color: #60706b;
+
+  font-size: 12px !important;
+
+  letter-spacing: 0 !important;
+
+  font-weight: 400 !important;
+
+  cursor: pointer;
+}
+
+.check:last-child {
+  margin-bottom: 0;
+}
+
+.check input {
+  width: 14px;
+  height: 14px;
+
+  margin: 0;
+
+  accent-color: #174f49;
+
+  cursor: pointer;
+}
+
+.check span {
+  line-height: 1.4;
+}
+
+.clear-filters {
+  width: 100%;
+
+  margin-top: 17px;
+
+  padding: 10px 12px;
+
+  border: 1px solid #d9e0da;
+
+  border-radius: 9px;
+
+  background: #f8faf8;
+
+  color: #53635e;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.clear-filters:hover {
+  border-color: #174f49;
+
+  color: #174f49;
+
+  background: #eef5f1;
+}
+
+/* =========================================================
+   RESULTS HEADER
+   ========================================================= */
+
+.results-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-end;
+
+  gap: 20px;
+
+  margin-bottom: 18px;
+}
+
+.results-header h2 {
+  font-size: 34px;
+}
+
+.results-header h2 em {
+  color: #a77a36;
+
+  font-style: normal;
+
+  padding: 0 4px;
+}
+
+.results-header p {
+  margin: 5px 0 0;
+
+  color: #89948f;
+
+  font-size: 11px;
+}
+
+.sort-box {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.sort-box label {
+  color: #7f8b86;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+
+  white-space: nowrap;
+}
+
+.sort-box select {
+  height: 42px;
+
+  min-width: 175px;
+
+  padding: 0 12px;
+
+  border: 1px solid #d9e0da;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: white;
+
+  color: #344e49;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.sort-box select:focus {
+  border-color: #174f49;
+
+  box-shadow:
+    0 0 0 3px rgba(23, 79, 73, 0.08);
+}
+
+.sort-box option {
+  background: white;
+
+  color: #253f3b;
+}
+
+/* =========================================================
+   BUS LIST
+   ========================================================= */
+
+.bus-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 13px;
+}
+
+/* =========================================================
+   BUS CARD
+   ========================================================= */
+
+.bus-card {
+  background: white;
+
+  border: 1px solid #e1e6e0;
+
+  border-radius: 16px;
+
+  padding: 21px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.bus-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #d1dbd4;
+
+  box-shadow:
+    0 15px 35px rgba(28, 55, 49, 0.09);
+}
+
+.bus-top {
+  display: grid;
+
+  grid-template-columns:
+    1.05fr
+    1.75fr
+    0.7fr;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+.operator {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  min-width: 0;
+}
+
+.operator-icon {
+  width: 43px;
+  height: 43px;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background: #edf3ee;
+
+  display: grid;
+
+  place-items: center;
+
+  color: #174f49;
+}
+
+.operator h3 {
+  margin: 0;
+
+  color: #253f3b;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.operator p {
+  margin: 4px 0 0;
+
+  color: #8d9894;
+
+  font-size: 10px;
+}
+
+.times {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(70px, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.times > div:not(.duration) {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.times strong {
+  color: #253f3b;
+
+  font-size: 14px;
+}
+
+.times span {
+  color: #8a9691;
+
+  font-size: 10px;
+}
+
+.duration {
+  min-width: 75px;
+
+  text-align: center;
+}
+
+.duration > span {
+  display: block;
+
+  margin-bottom: 2px;
+}
+
+.time-line {
+  position: relative;
+
+  width: 100%;
+
+  height: 1px;
+
+  background: #d3dad5;
+}
+
+.time-line::before,
+.time-line::after {
+  content: "";
+
+  position: absolute;
+
+  top: -2.5px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #a77a36;
+}
+
+.time-line::before {
+  left: 0;
+}
+
+.time-line::after {
+  right: 0;
+}
+
+.bus-cost {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 3px;
+
+  text-align: right;
+}
+
+.bus-cost span {
+  color: #a77a36;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+  font-weight: 700;
+}
+
+.bus-cost strong {
+  color: #1d403b;
+
+  font-size: 20px;
+
+  font-weight: 700;
+}
+
+.bus-cost small {
+  color: #969f9c;
+
+  font-size: 9px;
+}
+
+.bus-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-top: 17px;
+
+  padding-top: 13px;
+
+  border-top: 1px solid #edf0ec;
+}
+
+.bus-info {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 17px;
+
+  color: #7c8984;
+
+  font-size: 10px;
+}
+
+.bus-info span:first-child {
+  color: #a77a36;
+
+  font-weight: 700;
+}
+
+.select-btn {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  padding: 11px 18px;
+
+  background: #174f49;
+
+  color: white;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+}
+
+.select-btn span {
+  font-size: 16px;
+
+  transition: transform 0.2s ease;
+}
+
+.select-btn:hover {
+  background: #103f3a;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 18px rgba(23, 79, 73, 0.2);
+}
+
+.select-btn:hover span {
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   NO RESULTS
+   ========================================================= */
+
+.no-results {
+  padding: 65px 25px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #e1e6e0;
+
+  border-radius: 16px;
+}
+
+.no-results-icon {
+  width: 46px;
+  height: 46px;
+
+  margin: 0 auto 16px;
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  background: #edf3ee;
+
+  color: #174f49;
+
+  font-size: 22px;
+}
+
+.no-results h3 {
+  margin: 0;
+
+  color: #29443f;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 22px;
+}
+
+.no-results p {
+  margin: 8px 0 18px;
+
+  color: #7d8984;
+
+  font-size: 12px;
+}
+
+.no-results button {
+  border: none;
+
+  border-radius: 9px;
+
+  padding: 10px 18px;
+
+  background: #174f49;
+
+  color: white;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   WHY EXPLORE INDIA
+   ========================================================= */
+
+.why-section {
+  margin-top: 78px;
+
+  padding-top: 52px;
+
+  border-top: 1px solid #dfe4de;
+}
+
+.why-heading {
+  max-width: 620px;
+}
+
+.why-heading h2 {
+  font-size: 38px;
+}
+
+.why-heading p {
+  margin: 10px 0 0;
+
+  color: #7d8984;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+.benefits {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 18px;
+
+  margin-top: 30px;
+}
+
+.benefit {
+  min-height: 185px;
+
+  padding: 25px;
+
+  background: white;
+
+  border: 1px solid #e0e5df;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 25px rgba(28, 55, 49, 0.045);
+
+  transition: 0.25s ease;
+}
+
+.benefit:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 35px rgba(28, 55, 49, 0.08);
+}
+
+.benefit-icon {
+  width: 40px;
+  height: 40px;
+
+  display: grid;
+
+  place-items: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 11px;
+
+  background: #edf3ee;
+
+  color: #174f49;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+.benefit h3 {
+  margin: 0;
+
+  color: #29443f;
+
+  font-size: 14px;
+}
+
+.benefit p {
+  margin: 7px 0 0;
+
+  color: #7d8984;
+
+  font-size: 11px;
+
+  line-height: 1.65;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .bus-navbar {
+    width: calc(100% - 50px);
+  }
+
+  .bus-nav {
+    gap: 19px;
+  }
+
+  .bus-nav a {
+    font-size: 13px;
+  }
+
+  .content {
+    width: calc(100% - 50px);
+  }
+
+  .booking-layout {
+    grid-template-columns:
+      215px
+      minmax(0, 1fr);
+
+    gap: 22px;
+  }
+
+  .bus-top {
+    grid-template-columns:
+      1fr
+      1.5fr
+      0.65fr;
+
+    gap: 13px;
+  }
+}
+
+/* =========================================================
+   SMALL LAPTOP / TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .bus-navbar {
+    width: calc(100% - 35px);
+  }
+
+  .bus-nav {
+    display: none;
+  }
+
+  .bus-account-actions {
+    gap: 15px;
+  }
+
+  .search-box {
+    grid-template-columns:
+      1fr
+      38px
+      1fr;
+
+    gap: 5px;
+
+    padding: 13px;
+  }
+
+  .search-item:nth-of-type(3) {
+    grid-column: 1 / 3;
+  }
+
+  .search-main-btn {
+    grid-column: 1 / 4;
+
+    margin-top: 5px;
+  }
+
+  .booking-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    position: static;
+
+    display: grid;
+
+    grid-template-columns:
+      1fr
+      1fr
+      1fr;
+
+    gap: 20px;
+
+    padding: 20px;
+  }
+
+  .filter-title {
+    grid-column: 1 / -1;
+  }
+
+  .filter-section {
+    padding: 0;
+
+    border-bottom: none;
+  }
+
+  .clear-filters {
+    align-self: end;
+
+    margin-top: 0;
+  }
+
+  .benefits {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+  .bus-navbar {
+    height: 76px;
+
+    width: calc(100% - 28px);
+  }
+
+  .bus-logo {
+    font-size: 25px;
+  }
+
+  .bus-login-link {
+    display: none;
+  }
+
+  .bus-signup-link {
+    padding: 9px 15px;
+
+    font-size: 12px;
+  }
+
+  .account-btn {
+    padding: 6px 10px 6px 6px;
+
+    font-size: 12px;
+  }
+
+  .account-avatar-small {
+    width: 29px;
+    height: 29px;
+  }
+
+  .bus-hero {
+    height: 375px;
+  }
+
+  .hero-inner h1 {
+    font-size: 50px;
+  }
+
+  .hero-small {
+    font-size: 9px;
+
+    letter-spacing: 3px;
+  }
+
+  .hero-description {
+    font-size: 13px;
+
+    max-width: 340px;
+  }
+
+  .search-area {
+    width: calc(100% - 28px);
+
+    margin-top: -30px;
+  }
+
+  .search-box {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    padding: 14px;
+  }
+
+  .search-item {
+    padding: 10px 7px;
+  }
+
+  .swap-btn {
+    display: none;
+  }
+
+  .search-main-btn {
+    width: 100%;
+
+    margin-top: 7px;
+  }
+
+  .content {
+    width: calc(100% - 28px);
+
+    margin-top: 45px;
+  }
+
+  .popular {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 18px;
+  }
+
+  .section-heading h2 {
+    font-size: 29px;
+  }
+
+  .route-pills {
+    justify-content: flex-start;
+  }
+
+  .filters {
+    display: block;
+
+    padding: 20px;
+  }
+
+  .filter-title {
+    margin-bottom: 5px;
+  }
+
+  .filter-section {
+    padding: 18px 0;
+  }
+
+  .results-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 14px;
+  }
+
+  .results-header h2 {
+    font-size: 29px;
+  }
+
+  .sort-box {
+    width: 100%;
+
+    align-items: stretch;
+
+    flex-direction: column;
+
+    gap: 6px;
+  }
+
+  .sort-box select {
+    width: 100%;
+  }
+
+  .bus-top {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 18px;
+  }
+
+  .bus-cost {
+    align-items: flex-start;
+
+    text-align: left;
+  }
+
+  .times {
+    width: 100%;
+  }
+
+  .bus-bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .bus-info {
+    gap: 10px 14px;
+  }
+
+  .select-btn {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .why-heading h2 {
+    font-size: 31px;
+  }
+
+  .bus-account-dropdown {
+    width: 270px;
+
+    right: -4px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+  .bus-logo {
+    font-size: 23px;
+  }
+
+  .bus-signup-link {
+    padding: 8px 12px;
+  }
+
+  .account-btn span:nth-child(2) {
+    display: none;
+  }
+
+  .hero-inner h1 {
+    font-size: 43px;
+  }
+
+  .times {
+    grid-template-columns:
+      1fr
+      0.8fr
+      1fr;
+  }
+
+  .times strong {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   FINAL BUS PAGE LAYOUT FIX
+   ========================================================= */
+
+/* Give the bus results the majority of the page */
+.buses-page .booking-layout {
+  width: 100% !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    280px !important;
+
+  gap: 28px !important;
+
+  align-items: start !important;
+}
+
+/* BUS RESULTS — LARGE AREA */
+.buses-page .results {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+/* FILTERS — SMALL RIGHT SIDEBAR */
+.buses-page .filters {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+
+  width: 280px !important;
+  max-width: 280px !important;
+
+  padding: 22px 20px !important;
+
+  border-radius: 18px !important;
+
+  background: rgba(255, 255, 255, 0.96) !important;
+
+  border: 1px solid rgba(215, 221, 216, 0.9) !important;
+
+  box-shadow:
+    0 15px 40px rgba(24, 63, 58, 0.08) !important;
+
+  position: sticky !important;
+  top: 105px !important;
+
+  box-sizing: border-box !important;
+}
+
+/* Smaller filter heading */
+.buses-page .filter-title h3 {
+  font-size: 24px !important;
+  margin: 5px 0 0 !important;
+}
+
+.buses-page .filter-title span {
+  font-size: 9px !important;
+  letter-spacing: 1.8px !important;
+}
+
+/* Compact filter sections */
+.buses-page .filter-section {
+  padding: 16px 0 !important;
+}
+
+.buses-page .filter-section > label:first-child {
+  margin-bottom: 10px !important;
+}
+
+/* Compact tier buttons */
+.buses-page .filter-choice {
+  padding: 7px 0 !important;
+  font-size: 12px !important;
+}
+
+/* Compact checkboxes */
+.buses-page .check {
+  margin-bottom: 8px !important;
+}
+
+/* BUS RESULTS HEADER */
+.buses-page .results-header {
+  width: 100% !important;
+
+  display: flex !important;
+
+  justify-content: space-between !important;
+
+  align-items: flex-end !important;
+
+  gap: 25px !important;
+
+  margin-bottom: 18px !important;
+}
+
+.buses-page .results-header h2 {
+  font-size: 36px !important;
+
+  line-height: 1.1 !important;
+}
+
+.buses-page .results-header p {
+  font-size: 12px !important;
+
+  margin-top: 7px !important;
+}
+
+/* Sort control */
+.buses-page .results-header select {
+  min-width: 180px !important;
+
+  height: 44px !important;
+
+  padding: 0 14px !important;
+
+  border-radius: 11px !important;
+
+  background: white !important;
+
+  border: 1px solid #d9dfda !important;
+
+  color: #183f3a !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 12px !important;
+
+  font-weight: 600 !important;
+}
+
+/* BUS LIST */
+.buses-page .bus-list {
+  width: 100% !important;
+
+  display: flex !important;
+
+  flex-direction: column !important;
+
+  gap: 16px !important;
+}
+
+/* WIDER BUS CARDS */
+.buses-page .bus-card {
+  width: 100% !important;
+
+  min-width: 0 !important;
+
+  padding: 23px 25px !important;
+
+  border-radius: 18px !important;
+
+  box-sizing: border-box !important;
+
+  background: rgba(255, 255, 255, 0.97) !important;
+
+  border: 1px solid #e0e5e0 !important;
+
+  box-shadow:
+    0 8px 25px rgba(24, 63, 58, 0.055) !important;
+}
+
+.buses-page .bus-card:hover {
+  transform: translateY(-3px) !important;
+
+  box-shadow:
+    0 16px 35px rgba(24, 63, 58, 0.10) !important;
+}
+
+/* Give operator / timing / price proper proportions */
+.buses-page .bus-top {
+  width: 100% !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    minmax(170px, 1fr)
+    minmax(300px, 2fr)
+    minmax(120px, 0.65fr) !important;
+
+  gap: 30px !important;
+
+  align-items: center !important;
+}
+
+/* Operator */
+.buses-page .operator {
+  min-width: 0 !important;
+}
+
+.buses-page .operator h3 {
+  font-size: 15px !important;
+
+  color: #183f3a !important;
+}
+
+.buses-page .operator p {
+  font-size: 11px !important;
+}
+
+/* Times */
+.buses-page .times {
+  min-width: 0 !important;
+
+  gap: 18px !important;
+}
+
+.buses-page .times strong {
+  font-size: 16px !important;
+
+  color: #183f3a !important;
+}
+
+.buses-page .times span {
+  font-size: 10px !important;
+}
+
+/* Price */
+.buses-page .bus-cost strong {
+  font-size: 23px !important;
+
+  color: #183f3a !important;
+}
+
+.buses-page .bus-cost span {
+  font-size: 9px !important;
+}
+
+.buses-page .bus-cost small {
+  font-size: 10px !important;
+}
+
+/* Bottom information */
+.buses-page .bus-bottom {
+  margin-top: 20px !important;
+
+  padding-top: 15px !important;
+}
+
+.buses-page .bus-info {
+  gap: 20px !important;
+
+  font-size: 11px !important;
+}
+
+/* Select button */
+.buses-page .select-btn {
+  padding: 11px 21px !important;
+
+  border-radius: 10px !important;
+
+  font-size: 12px !important;
+
+  background: #174f49 !important;
+}
+
+.buses-page .select-btn:hover {
+  background: #123f3a !important;
+
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   POPULAR ROUTES
+   ========================================================= */
+
+.buses-page .popular {
+  margin-bottom: 26px !important;
+}
+
+.buses-page .popular h2 {
+  font-size: 32px !important;
+}
+
+.buses-page .route-pills {
+  gap: 9px !important;
+}
+
+.buses-page .route-pills button {
+  padding: 10px 15px !important;
+
+  font-size: 11px !important;
+
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .buses-page .booking-layout {
+    grid-template-columns:
+      minmax(0, 1fr)
+      250px !important;
+
+    gap: 20px !important;
+  }
+
+  .buses-page .filters {
+    width: 250px !important;
+    max-width: 250px !important;
+  }
+
+  .buses-page .bus-top {
+    grid-template-columns:
+      1fr
+      1.5fr
+      0.7fr !important;
+
+    gap: 15px !important;
+  }
+
+}
+
+
+/* TABLET */
+@media (max-width: 850px) {
+
+  .buses-page .booking-layout {
+    display: flex !important;
+
+    flex-direction: column !important;
+  }
+
+  .buses-page .results {
+    order: 1 !important;
+  }
+
+  .buses-page .filters {
+    order: 2 !important;
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    position: static !important;
+  }
+
+  .buses-page .bus-top {
+    grid-template-columns: 1fr !important;
+  }
+
+  .buses-page .bus-cost {
+    align-items: flex-start !important;
+
+    text-align: left !important;
+  }
+
+}
+
+
+/* MOBILE */
+@media (max-width: 550px) {
+
+  .buses-page .content {
+    width: calc(100% - 30px) !important;
+  }
+
+  .buses-page .results-header {
+    flex-direction: column !important;
+
+    align-items: flex-start !important;
+  }
+
+  .buses-page .results-header select {
+    width: 100% !important;
+  }
+
+  .buses-page .bus-card {
+    padding: 18px !important;
+  }
+
+}
+
+/* =========================================================
+   CLEAN POPULAR BUS ROUTES SECTION
+   ========================================================= */
+
+.buses-page .popular {
+  width: 100% !important;
+  margin: 0 0 55px !important;
+  padding: 0 !important;
+}
+
+.buses-page .popular-content {
+  width: 100% !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  text-align: center !important;
+
+  padding: 10px 20px 0 !important;
+
+  box-sizing: border-box !important;
+}
+
+/* DISCOVER MORE */
+.buses-page .popular-eyebrow {
+  display: block !important;
+
+  margin-bottom: 10px !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 10px !important;
+
+  font-weight: 700 !important;
+
+  letter-spacing: 3px !important;
+
+  color: #0f6b64 !important;
+}
+
+/* POPULAR BUS ROUTES */
+.buses-page .popular-content h2 {
+  margin: 0 !important;
+
+  font-family: "Playfair Display", serif !important;
+
+  font-size: 42px !important;
+
+  line-height: 1.15 !important;
+
+  font-weight: 600 !important;
+
+  color: #174f49 !important;
+}
+
+/* DESCRIPTION */
+.buses-page .popular-content p {
+  max-width: 540px !important;
+
+  margin: 12px auto 0 !important;
+
+  font-family: "DM Sans", sans-serif !important;
+
+  font-size: 14px !important;
+
+  line-height: 1.7 !important;
+
+  color: #6d7d7b !important;
+}
+
+
+/* Remove route pills completely */
+.buses-page .route-pills {
+  display: none !important;
+}
+
+
+/* Make the section sit nicely before Available Buses */
+.buses-page .popular + * {
+  margin-top: 0 !important;
+}
+
+
+/* Smaller screens */
+@media (max-width: 700px) {
+
+  .buses-page .popular {
+    margin-bottom: 35px !important;
+  }
+
+  .buses-page .popular-content h2 {
+    font-size: 34px !important;
+  }
+
+  .buses-page .popular-content p {
+    font-size: 13px !important;
+  }
+
+}
