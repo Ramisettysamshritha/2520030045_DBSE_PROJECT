@@ -1,0 +1,1097 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+.home-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 650px;
+
+  background-size: cover;
+  background-position: center;
+
+  color: white;
+  overflow: hidden;
+
+  font-family: "DM Sans", sans-serif;
+
+  transition: background-image 0.8s ease-in-out;
+}
+
+/* DARK CINEMATIC OVERLAY */
+
+.home-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 12, 25, 0.78) 0%,
+      rgba(4, 12, 25, 0.42) 45%,
+      rgba(4, 12, 25, 0.35) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(4, 10, 20, 0.75) 0%,
+      rgba(4, 10, 20, 0.05) 30%,
+      rgba(4, 10, 20, 0.35) 100%
+    );
+
+  z-index: 1;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 86px;
+
+  padding: 0 6%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  z-index: 10;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(7, 17, 31, 0.22);
+
+  backdrop-filter: blur(8px);
+}
+
+/* LOGO */
+
+.logo {
+  text-decoration: none;
+  color: white;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 30px;
+  font-weight: 600;
+
+  letter-spacing: -1px;
+
+  white-space: nowrap;
+}
+
+.logo span {
+  font-style: italic;
+  font-weight: 500;
+
+  margin-left: 5px;
+}
+
+/* NAV LINKS */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+
+  gap: 34px;
+}
+
+.nav-links a {
+  position: relative;
+
+  color: rgba(255, 255, 255, 0.86);
+
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  padding: 10px 0;
+
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.nav-links a.active {
+  color: white;
+}
+
+.nav-links a.active::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: white;
+}
+
+/* NAV ACTIONS */
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+
+  gap: 25px;
+}
+
+.login-link {
+  color: white;
+  text-decoration: none;
+
+  font-size: 15px;
+}
+
+.signup-link {
+  color: white;
+  text-decoration: none;
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+
+  padding: 10px 22px;
+
+  border-radius: 30px;
+
+  font-size: 15px;
+
+  transition: 0.3s ease;
+}
+
+.signup-link:hover {
+  background: white;
+  color: #152236;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero-content {
+  position: absolute;
+
+  z-index: 5;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -43%);
+
+  width: min(800px, 90%);
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* LOCATION */
+
+.location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 4px;
+
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.location-icon {
+  font-size: 8px;
+
+  transform: rotate(45deg);
+
+  display: inline-block;
+}
+
+/* SMALL LINE */
+
+.small-line {
+  width: 50px;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.8);
+
+  margin: 23px 0 20px;
+}
+
+/* MAIN TITLE */
+
+.hero-content h1 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(72px, 9vw, 130px);
+
+  line-height: 0.95;
+
+  font-weight: 600;
+
+  letter-spacing: 3px;
+
+  text-shadow:
+    0 4px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* SUBTITLE */
+
+.hero-content h2 {
+  margin: 18px 0 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(25px, 3vw, 42px);
+
+  font-weight: 500;
+
+  font-style: italic;
+
+  line-height: 1.2;
+
+  text-shadow:
+    0 3px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* DESCRIPTION */
+
+.description {
+  max-width: 530px;
+
+  margin: 23px auto 0;
+
+  color: rgba(255, 255, 255, 0.86);
+
+  font-size: 16px;
+
+  line-height: 1.7;
+
+  font-weight: 400;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.hero-buttons {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 16px;
+
+  margin-top: 32px;
+}
+
+.explore-button,
+.book-button {
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 54px;
+
+  padding: 0 27px;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.explore-button {
+  background: white;
+
+  color: #172236;
+
+  gap: 15px;
+
+  min-width: 185px;
+}
+
+.explore-button span {
+  font-size: 20px;
+
+  transition: transform 0.3s ease;
+}
+
+.explore-button:hover {
+  transform: translateY(-3px);
+}
+
+.explore-button:hover span {
+  transform: translateX(5px);
+}
+
+.book-button {
+  min-width: 160px;
+
+  color: white;
+
+  border: 1px solid rgba(255, 255, 255, 0.85);
+
+  background: rgba(255, 255, 255, 0.04);
+
+  backdrop-filter: blur(5px);
+}
+
+.book-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+
+  transform: translateY(-3px);
+}
+
+/* =========================
+   ARROWS
+========================= */
+
+.slide-arrow {
+  position: absolute;
+
+  z-index: 8;
+
+  top: 57%;
+
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: white;
+
+  font-size: 40px;
+
+  font-family: Arial, sans-serif;
+
+  font-weight: 200;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(5px);
+
+  transition: 0.3s ease;
+}
+
+.slide-arrow:hover {
+  background: rgba(255, 255, 255, 0.18);
+
+  border-color: white;
+
+  transform: scale(1.05);
+}
+
+.left-arrow {
+  left: 3.5%;
+}
+
+.right-arrow {
+  right: 3.5%;
+}
+
+/* =========================
+   SLIDE INDICATOR
+========================= */
+
+.slide-indicator {
+  position: absolute;
+
+  z-index: 7;
+
+  bottom: 43px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+.current-number,
+.total-number {
+  font-size: 12px;
+
+  letter-spacing: 2px;
+
+  font-weight: 500;
+}
+
+.current-number {
+  color: white;
+}
+
+.total-number {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.indicator-line {
+  position: relative;
+
+  width: 105px;
+  height: 2px;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  overflow: hidden;
+}
+
+.indicator-progress {
+  height: 100%;
+
+  background: white;
+
+  transition: width 0.5s ease;
+}
+
+/* =========================
+   BOTTOM LABEL
+========================= */
+
+.bottom-label {
+  position: absolute;
+
+  z-index: 6;
+
+  left: 6%;
+
+  bottom: 42px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .navbar {
+    padding: 0 4%;
+  }
+
+  .hero-content h1 {
+    font-size: 90px;
+  }
+}
+
+@media (max-width: 850px) {
+
+  .nav-links {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0 6%;
+  }
+
+  .hero-content {
+    top: 51%;
+  }
+
+  .hero-content h1 {
+    font-size: 75px;
+  }
+
+  .hero-content h2 {
+    font-size: 28px;
+  }
+
+  .description {
+    font-size: 14px;
+    max-width: 450px;
+  }
+
+  .bottom-label {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .home-page {
+    min-height: 600px;
+  }
+
+  .navbar {
+    height: 75px;
+  }
+
+  .logo {
+    font-size: 25px;
+  }
+
+  .nav-actions {
+    gap: 12px;
+  }
+
+  .login-link {
+    display: none;
+  }
+
+  .signup-link {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .hero-content {
+    width: 92%;
+  }
+
+  .location {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+  }
+
+  .small-line {
+    margin: 18px 0;
+  }
+
+  .hero-content h1 {
+    font-size: 57px;
+    letter-spacing: 1px;
+  }
+
+  .hero-content h2 {
+    font-size: 23px;
+  }
+
+  .description {
+    font-size: 13px;
+    line-height: 1.6;
+
+    margin-top: 17px;
+  }
+
+  .hero-buttons {
+    margin-top: 25px;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    width: 100%;
+  }
+
+  .explore-button,
+  .book-button {
+    width: 210px;
+
+    height: 48px;
+  }
+
+  .slide-arrow {
+    width: 45px;
+    height: 45px;
+
+    font-size: 32px;
+
+    top: 55%;
+  }
+
+  .left-arrow {
+    left: 4%;
+  }
+
+  .right-arrow {
+    right: 4%;
+  }
+
+  .slide-indicator {
+    bottom: 25px;
+  }
+}
+
+/* =========================================
+   ACCOUNT / USER MENU
+   ========================================= */
+
+.account-wrapper {
+  position: relative;
+}
+
+.account-button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 7px 14px 7px 7px;
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  color: white;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(12px);
+
+  transition: 0.25s ease;
+}
+
+.account-button:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.user-circle {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #d8b36a;
+  color: #171717;
+
+  font-weight: 700;
+}
+
+.account-arrow {
+  font-size: 15px;
+}
+
+
+/* =========================================
+   ACCOUNT DROPDOWN
+   ========================================= */
+
+.account-dropdown {
+  position: absolute;
+
+  top: 53px;
+  right: 0;
+
+  width: 285px;
+
+  padding: 12px;
+
+  background: white;
+
+  border-radius: 16px;
+
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+
+  color: #222;
+
+  z-index: 9999;
+
+  animation: accountDrop 0.18s ease;
+}
+
+@keyframes accountDrop {
+
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* PROFILE */
+
+.account-profile {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px;
+}
+
+.profile-circle {
+  width: 43px;
+  height: 43px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #d8b36a;
+  color: #171717;
+
+  font-weight: 700;
+
+  flex-shrink: 0;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.profile-info strong {
+  font-size: 14px;
+
+  color: #222;
+}
+
+.profile-info span {
+  margin-top: 4px;
+
+  font-size: 11px;
+
+  color: #777;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  max-width: 195px;
+}
+
+
+/* LINE */
+
+.dropdown-line {
+  height: 1px;
+
+  background: #eeeeee;
+
+  margin: 7px 4px;
+}
+
+
+/* DROPDOWN LINKS */
+
+.account-dropdown a,
+.logout-button {
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: #333;
+
+  text-decoration: none;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition: 0.2s ease;
+}
+
+.account-dropdown a span,
+.logout-button span {
+  width: 20px;
+
+  font-size: 17px;
+}
+
+.account-dropdown a:hover {
+  background: #f5f5f5;
+}
+
+
+/* LOGOUT */
+
+.logout-button {
+  color: #b23a32;
+}
+
+.logout-button:hover {
+  background: #fff2f1;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+  .account-button {
+    padding: 6px 10px 6px 6px;
+
+    font-size: 12px;
+  }
+
+  .user-circle {
+    width: 29px;
+    height: 29px;
+  }
+
+  .account-dropdown {
+    right: -5px;
+
+    width: 270px;
+  }
+
+}
+
+/* =========================================
+   USER ACCOUNT
+   ========================================= */
+
+.home-user-menu {
+  position: relative;
+}
+
+.home-user-button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 7px 13px 7px 7px;
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  color: white;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+}
+
+.home-user-button:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.home-user-avatar {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #d8b36a;
+  color: #222;
+
+  font-weight: 700;
+}
+
+
+/* DROPDOWN */
+
+.home-user-dropdown {
+  position: absolute;
+
+  top: 52px;
+  right: 0;
+
+  width: 280px;
+
+  padding: 12px;
+
+  background: white;
+
+  border-radius: 15px;
+
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+
+  display: none;
+
+  z-index: 9999;
+}
+
+.home-user-dropdown.show {
+  display: block;
+}
+
+
+/* PROFILE */
+
+.home-user-info {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px;
+}
+
+.home-user-big-avatar {
+  width: 43px;
+  height: 43px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #d8b36a;
+  color: #222;
+
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.home-user-info strong {
+  display: block;
+
+  color: #222;
+
+  font-size: 14px;
+}
+
+.home-user-info small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #777;
+
+  font-size: 11px;
+
+  max-width: 185px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* DIVIDER */
+
+.home-user-divider {
+  height: 1px;
+
+  background: #eeeeee;
+
+  margin: 6px 4px;
+}
+
+
+/* LINKS */
+
+.home-user-dropdown a,
+.home-signout {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: #333;
+
+  text-decoration: none;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+.home-user-dropdown a:hover {
+  background: #f5f5f5;
+}
+
+.home-user-dropdown a span,
+.home-signout span {
+  width: 20px;
+
+  font-size: 16px;
+}
+
+
+/* SIGN OUT */
+
+.home-signout {
+  color: #b23a32;
+}
+
+.home-signout:hover {
+  background: #fff1ef;
+}
