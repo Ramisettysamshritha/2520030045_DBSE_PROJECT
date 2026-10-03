@@ -110,10 +110,22 @@ const packages = [
 ];
 
 const destinations = [
-  { name: "Rajasthan", image: "/photos/picture5.png" },
-  { name: "Goa", image: "/photos/picture2.jpg" },
-  { name: "Kerala", image: "/photos/picture3.jpg" },
-  { name: "Ladakh", image: "/photos/picture4.jpg" },
+  {
+    name: "Rajasthan",
+    image: "/photos/picture5.png",
+  },
+  {
+    name: "Goa",
+    image: "/photos/picture2.jpg",
+  },
+  {
+    name: "Kerala",
+    image: "/photos/picture3.jpg",
+  },
+  {
+    name: "Ladakh",
+    image: "/photos/picture4.jpg",
+  },
 ];
 
 function Tours() {
@@ -155,6 +167,7 @@ function Tours() {
     localStorage.removeItem("exploreIndiaName");
     localStorage.removeItem("exploreIndiaUser");
     localStorage.removeItem("exploreIndiaPhone");
+    localStorage.removeItem("exploreIndiaToken");
 
     setLoggedIn(false);
     setUserName("");
@@ -192,7 +205,8 @@ function Tours() {
       let durationMatch = true;
 
       if (duration === "Short") {
-        durationMatch = parseInt(item.duration) <= 4;
+        durationMatch =
+          parseInt(item.duration) <= 4;
       }
 
       if (duration === "Medium") {
@@ -240,13 +254,16 @@ function Tours() {
 
     document
       .getElementById("package-results")
-      ?.scrollIntoView({ behavior: "smooth" });
+      ?.scrollIntoView({
+        behavior: "smooth",
+      });
   };
 
   return (
     <div className="tours-page">
 
-      {/* NAVBAR */}
+      {/* ================= NAVBAR ================= */}
+
       <nav className="tours-navbar">
 
         <Link
@@ -288,6 +305,7 @@ function Tours() {
         </div>
 
         {/* ACCOUNT */}
+
         <div className="tours-account-wrapper">
 
           {!loggedIn ? (
@@ -404,7 +422,9 @@ function Tours() {
 
       </nav>
 
-      {/* HERO */}
+
+      {/* ================= HERO ================= */}
+
       <section className="tours-hero">
 
         <div className="tours-overlay"></div>
@@ -448,6 +468,7 @@ function Tours() {
 
             </div>
 
+
             <div className="tour-field">
 
               <span>▣</span>
@@ -470,6 +491,7 @@ function Tours() {
 
             </div>
 
+
             <div className="tour-field">
 
               <span>♙</span>
@@ -486,6 +508,7 @@ function Tours() {
                     setTravellers(e.target.value)
                   }
                 >
+
                   <option>
                     1 Traveller
                   </option>
@@ -516,6 +539,7 @@ function Tours() {
 
             </div>
 
+
             <button onClick={searchPackages}>
               Search Trips
             </button>
@@ -526,7 +550,9 @@ function Tours() {
 
       </section>
 
-      {/* DESTINATIONS */}
+
+      {/* ================= DESTINATIONS ================= */}
+
       <section className="tour-destinations">
 
         <div className="tour-section-heading">
@@ -548,6 +574,7 @@ function Tours() {
           </p>
 
         </div>
+
 
         <div className="tour-destination-grid">
 
@@ -592,7 +619,9 @@ function Tours() {
 
       </section>
 
-      {/* PACKAGES */}
+
+      {/* ================= PACKAGES ================= */}
+
       <section
         className="package-section"
         id="package-results"
@@ -618,6 +647,7 @@ function Tours() {
 
           </div>
 
+
           <div className="package-sort">
 
             <label>
@@ -630,6 +660,7 @@ function Tours() {
                 setSort(e.target.value)
               }
             >
+
               <option>
                 Recommended
               </option>
@@ -652,9 +683,11 @@ function Tours() {
 
         </div>
 
+
         <div className="package-layout">
 
-          {/* FILTERS */}
+          {/* ================= FILTERS ================= */}
+
           <aside className="package-filters">
 
             <div className="filter-top">
@@ -675,6 +708,7 @@ function Tours() {
               </button>
 
             </div>
+
 
             <div className="package-filter-group">
 
@@ -734,6 +768,7 @@ function Tours() {
 
             </div>
 
+
             <div className="package-filter-group">
 
               <h4>
@@ -771,6 +806,7 @@ function Tours() {
 
             </div>
 
+
             <div className="package-filter-note">
 
               <strong>
@@ -786,7 +822,9 @@ function Tours() {
 
           </aside>
 
-          {/* PACKAGE CARDS */}
+
+          {/* ================= PACKAGE CARDS ================= */}
+
           <main className="package-list">
 
             {filteredPackages.length === 0 ? (
@@ -847,6 +885,7 @@ function Tours() {
 
                   </div>
 
+
                   <div className="package-details">
 
                     <div className="package-main">
@@ -869,6 +908,7 @@ function Tours() {
 
                         </div>
 
+
                         <div className="package-rating">
 
                           <strong>
@@ -887,6 +927,7 @@ function Tours() {
 
                       </div>
 
+
                       <div className="package-highlights">
 
                         {item.highlights.map(
@@ -902,6 +943,9 @@ function Tours() {
                       </div>
 
                     </div>
+
+
+                    {/* ================= PRICE ================= */}
 
                     <div className="package-price">
 
@@ -921,26 +965,18 @@ function Tours() {
                         Taxes included
                       </p>
 
-                      <button
-  type="button"
-  className="itinerary-button"
-  onClick={() => {
-    setDestination(item.destination);
-    setSearch(item.destination);
 
-    setTimeout(() => {
-      document
-        .getElementById("package-results")
-        ?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-    }, 50);
-  }}
->
-  View Itinerary
-  <span>→</span>
-</button>
+                      {/* VIEW ITINERARY */}
+
+                      <Link
+                        to={`/tour/${item.id}`}
+                        className="itinerary-button"
+                      >
+                        View Itinerary
+                        <span>
+                          →
+                        </span>
+                      </Link>
 
                     </div>
 
@@ -958,7 +994,9 @@ function Tours() {
 
       </section>
 
-      {/* EXPERIENCE */}
+
+      {/* ================= EXPERIENCE ================= */}
+
       <section className="tour-experience">
 
         <div className="experience-heading">
@@ -972,6 +1010,7 @@ function Tours() {
           </h2>
 
         </div>
+
 
         <div className="experience-grid">
 
@@ -992,6 +1031,7 @@ function Tours() {
 
           </div>
 
+
           <div>
 
             <span>
@@ -1008,6 +1048,7 @@ function Tours() {
             </p>
 
           </div>
+
 
           <div>
 
@@ -1030,7 +1071,9 @@ function Tours() {
 
       </section>
 
-      {/* FOOTER */}
+
+      {/* ================= FOOTER ================= */}
+
       <footer className="tour-footer">
 
         <div className="tour-footer-logo">

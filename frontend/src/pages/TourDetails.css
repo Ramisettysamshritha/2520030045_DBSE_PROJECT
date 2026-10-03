@@ -1,0 +1,681 @@
+/* =========================================================
+   EXPLORE INDIA — PREMIUM TOUR DETAILS
+========================================================= */
+
+.tour-details-page {
+  min-height: 100vh;
+  background: #f7f5f1;
+  color: #1d1d1b;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.tour-details-hero {
+  min-height: 620px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: #fff;
+}
+
+.tour-details-overlay {
+  min-height: 620px;
+  padding: 34px 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.52) 0%,
+      rgba(0, 0, 0, 0.08) 38%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+}
+
+
+/* BACK */
+
+.tour-back-link {
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+
+  padding: 11px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 30px;
+
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+
+  transition: 0.3s ease;
+}
+
+.tour-back-link:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.65);
+  transform: translateX(-3px);
+}
+
+
+/* HERO CONTENT */
+
+.tour-details-hero-content {
+  max-width: 900px;
+  padding-bottom: 45px;
+}
+
+.tour-details-eyebrow {
+  display: inline-block;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+
+  color: #e7c98b;
+
+  margin-bottom: 20px;
+}
+
+.tour-details-hero-content h1 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 6vw, 82px);
+  font-weight: 400;
+  line-height: 1.02;
+
+  letter-spacing: -2px;
+
+  max-width: 850px;
+}
+
+.tour-details-hero-content > p {
+  margin: 22px 0 30px;
+
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.82);
+  letter-spacing: 0.4px;
+}
+
+
+/* META */
+
+.tour-details-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.tour-details-meta span,
+.tour-details-meta strong,
+.tour-details-meta small {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tour-details-meta span {
+  padding-right: 16px;
+  border-right: 1px solid rgba(255, 255, 255, 0.35);
+
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.tour-details-meta strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 25px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.tour-details-meta small {
+  margin-left: -10px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================================================
+   ITINERARY SECTION
+========================================================= */
+
+.tour-itinerary-section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 110px 35px 100px;
+}
+
+
+/* HEADING */
+
+.tour-itinerary-heading {
+  max-width: 760px;
+  margin-bottom: 70px;
+}
+
+.tour-itinerary-heading > span {
+  display: block;
+
+  margin-bottom: 15px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  color: #a17b3d;
+}
+
+.tour-itinerary-heading h2 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 5vw, 58px);
+  font-weight: 400;
+
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+}
+
+.tour-itinerary-heading p {
+  margin-top: 18px;
+
+  font-size: 16px;
+  line-height: 1.7;
+
+  color: #77736d;
+}
+
+
+/* =========================================================
+   ITINERARY TIMELINE
+========================================================= */
+
+.itinerary-list {
+  position: relative;
+}
+
+
+/* VERTICAL LINE */
+
+.itinerary-list::before {
+  content: "";
+
+  position: absolute;
+
+  left: 86px;
+  top: 20px;
+  bottom: 20px;
+
+  width: 1px;
+
+  background: #ded9cf;
+}
+
+
+/* DAY */
+
+.itinerary-day {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 145px 1fr;
+
+  padding: 0 0 65px;
+
+  transition: 0.3s ease;
+}
+
+
+/* DAY NUMBER */
+
+.itinerary-day-number {
+  position: relative;
+  z-index: 2;
+
+  width: 105px;
+
+  padding-top: 5px;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+
+  color: #a17b3d;
+}
+
+
+/* DOT */
+
+.itinerary-day-number::after {
+  content: "";
+
+  position: absolute;
+
+  right: 33px;
+  top: 7px;
+
+  width: 9px;
+  height: 9px;
+
+  background: #a17b3d;
+
+  border: 4px solid #f7f5f1;
+
+  border-radius: 50%;
+
+  box-sizing: content-box;
+}
+
+
+/* CONTENT */
+
+.itinerary-day-content {
+  background: #fff;
+
+  border: 1px solid #e9e5dd;
+
+  border-radius: 2px;
+
+  padding: 34px 38px;
+
+  box-shadow:
+    0 10px 35px rgba(30, 25, 15, 0.045);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.itinerary-day-content:hover {
+  transform: translateY(-3px);
+
+  border-color: #d8c8a9;
+
+  box-shadow:
+    0 18px 45px rgba(30, 25, 15, 0.09);
+}
+
+
+.itinerary-day-content h3 {
+  margin: 0 0 12px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 27px;
+  font-weight: 400;
+
+  color: #24231f;
+}
+
+.itinerary-description {
+  margin: 0;
+
+  max-width: 780px;
+
+  color: #77736d;
+
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+
+/* ACTIVITIES */
+
+.itinerary-activities {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 25px;
+}
+
+.itinerary-activities span {
+  padding: 8px 13px;
+
+  border: 1px solid #e7e1d6;
+
+  background: #faf9f6;
+
+  color: #65615a;
+
+  font-size: 12px;
+  letter-spacing: 0.2px;
+
+  border-radius: 20px;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.tour-itinerary-cta {
+  position: relative;
+
+  margin: 0;
+
+  padding: 85px 7%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 50px;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      100deg,
+      #1d1c19,
+      #302c25
+    );
+}
+
+.tour-itinerary-cta::before {
+  content: "EXPLORE INDIA";
+
+  position: absolute;
+
+  right: 6%;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(60px, 9vw, 150px);
+
+  color: rgba(255, 255, 255, 0.035);
+
+  white-space: nowrap;
+
+  pointer-events: none;
+}
+
+.tour-itinerary-cta > div {
+  position: relative;
+  z-index: 1;
+}
+
+.tour-itinerary-cta span {
+  display: block;
+
+  margin-bottom: 13px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  color: #d7b979;
+}
+
+.tour-itinerary-cta h2 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 400;
+}
+
+.tour-itinerary-cta p {
+  margin: 13px 0 0;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  font-size: 15px;
+}
+
+
+/* BOOK BUTTON */
+
+.tour-book-button {
+  position: relative;
+  z-index: 2;
+
+  flex-shrink: 0;
+
+  padding: 16px 27px;
+
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  letter-spacing: 0.5px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s ease;
+}
+
+.tour-book-button:hover {
+  background: #fff;
+  color: #1d1c19;
+
+  border-color: #fff;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.tour-details-footer {
+  padding: 38px 7%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  background: #141412;
+
+  color: rgba(255, 255, 255, 0.6);
+
+  font-size: 12px;
+}
+
+.tour-details-footer > div {
+  color: #fff;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 20px;
+}
+
+.tour-details-footer p {
+  margin: 0;
+}
+
+.tour-details-footer a {
+  color: rgba(255, 255, 255, 0.75);
+
+  text-decoration: none;
+
+  transition: 0.25s ease;
+}
+
+.tour-details-footer a:hover {
+  color: #fff;
+}
+
+
+/* =========================================================
+   NOT FOUND
+========================================================= */
+
+.tour-details-not-found {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #f7f5f1;
+
+  text-align: center;
+
+  padding: 40px;
+}
+
+.tour-details-not-found h1 {
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 52px;
+  font-weight: 400;
+
+  margin-bottom: 10px;
+}
+
+.tour-details-not-found p {
+  color: #77736d;
+}
+
+.tour-details-not-found a {
+  margin-top: 25px;
+
+  color: #a17b3d;
+
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .tour-details-hero,
+  .tour-details-overlay {
+    min-height: 560px;
+  }
+
+  .tour-details-overlay {
+    padding: 25px 5%;
+  }
+
+  .tour-itinerary-section {
+    padding: 80px 25px;
+  }
+
+  .itinerary-list::before {
+    left: 60px;
+  }
+
+  .itinerary-day {
+    grid-template-columns: 110px 1fr;
+  }
+
+  .itinerary-day-number {
+    width: 75px;
+  }
+
+  .itinerary-day-number::after {
+    right: 10px;
+  }
+
+  .tour-itinerary-cta {
+    padding: 70px 5%;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  .tour-details-hero,
+  .tour-details-overlay {
+    min-height: 520px;
+  }
+
+  .tour-details-hero-content h1 {
+    font-size: 44px;
+    letter-spacing: -1px;
+  }
+
+  .tour-details-hero-content > p {
+    font-size: 15px;
+  }
+
+  .tour-details-meta {
+    gap: 10px;
+  }
+
+  .tour-details-meta span {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .tour-itinerary-section {
+    padding: 65px 18px;
+  }
+
+  .tour-itinerary-heading {
+    margin-bottom: 45px;
+  }
+
+  .itinerary-list::before {
+    display: none;
+  }
+
+  .itinerary-day {
+    display: block;
+    padding-bottom: 25px;
+  }
+
+  .itinerary-day-number {
+    width: auto;
+
+    margin-bottom: 10px;
+  }
+
+  .itinerary-day-number::after {
+    display: none;
+  }
+
+  .itinerary-day-content {
+    padding: 25px 22px;
+  }
+
+  .itinerary-day-content h3 {
+    font-size: 24px;
+  }
+
+  .tour-itinerary-cta {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 60px 25px;
+  }
+
+  .tour-itinerary-cta::before {
+    display: none;
+  }
+
+  .tour-details-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
